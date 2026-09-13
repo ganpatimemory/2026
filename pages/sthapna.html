@@ -242,71 +242,7 @@
 
         </div>
 
-
-        <div class="photo-grid">
-
-            <div class="photo-card"
-                 onclick="openLightbox('photo1')">
-
-                <img
-                    id="photo1"
-                    src="../assets/images/sthapna/photo1.jpg"
-                    alt="Ganpati Sthapna Photo 1"
-                >
-
-                <div class="photo-number">
-                    Moment 01
-                </div>
-
-            </div>
-
-
-            <div class="photo-card"
-                 onclick="openLightbox('photo2')">
-
-                <img
-                    id="photo2"
-                    src="../assets/images/sthapna/photo2.jpg"
-                    alt="Ganpati Sthapna Photo 2"
-                >
-
-                <div class="photo-number">
-                    Moment 02
-                </div>
-
-            </div>
-
-
-            <div class="photo-card"
-                 onclick="openLightbox('photo3')">
-
-                <img
-                    id="photo3"
-                    src="../assets/images/sthapna/photo3.jpg"
-                    alt="Ganpati Sthapna Photo 3"
-                >
-
-                <div class="photo-number">
-                    Moment 03
-                </div>
-
-            </div>
-
-
-            <div class="photo-card"
-                 onclick="openLightbox('photo4')">
-
-                <img
-                    id="photo4"
-                    src="../assets/images/sthapna/photo4.jpg"
-                    alt="Ganpati Sthapna Photo 4"
-                >
-
-                <div class="photo-number">
-                    Moment 04
-                </div>
-
-            </div>
+<div class="photo-grid" id="photoGrid"></div>
 
 
             <div class="photo-card"
@@ -381,20 +317,55 @@
 
 
 <script>
+const photos = [
+    "photo1.jpg",
+    "photo2.jpg",
+    "photo3.jpg",
+    "photo4.jpg",
+    "photo5.jpg",
+    "photo6.jpg"
+];
 
-function openLightbox(imageId) {
+const photoGrid = document.getElementById("photoGrid");
 
-    const image = document.getElementById(imageId);
+photos.forEach((photo, index) => {
 
-    const lightbox = document.getElementById("lightbox");
+    const card = document.createElement("div");
+
+    card.className = "photo-card";
+
+    card.innerHTML = `
+        <img
+            src="../assets/images/sthapna/${photo}"
+            alt="Ganpati Sthapna Memory ${index + 1}"
+        >
+
+        <div class="photo-number">
+            Moment ${String(index + 1).padStart(2, "0")}
+        </div>
+    `;
+
+    card.addEventListener("click", function() {
+        openLightbox(
+            `../assets/images/sthapna/${photo}`
+        );
+    });
+
+    photoGrid.appendChild(card);
+});
+
+
+function openLightbox(imageSrc) {
+
+    const lightbox =
+        document.getElementById("lightbox");
 
     const lightboxImage =
         document.getElementById("lightboxImage");
 
-    lightboxImage.src = image.src;
+    lightboxImage.src = imageSrc;
 
     lightbox.classList.add("active");
-
 }
 
 
@@ -404,21 +375,15 @@ function closeLightbox() {
         document.getElementById("lightbox");
 
     lightbox.classList.remove("active");
-
 }
 
 
 document.addEventListener("keydown", function(event) {
 
     if (event.key === "Escape") {
-
         closeLightbox();
-
     }
 
 });
-
 </script>
 
-</body>
-</html>
