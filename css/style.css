@@ -1,1 +1,703 @@
+/* =========================================
+   OUR GANPATI — GMC SEONI 2026
+   PROFESSIONAL FESTIVAL DESIGN
+========================================= */
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Georgia, "Noto Serif Devanagari", serif;
+    background: #100806;
+    color: #fff8e7;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   WELCOME SCREEN
+========================================= */
+
+#welcome-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(circle at center,
+        #5c250c 0%,
+        #241006 45%,
+        #080403 100%);
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+}
+
+#welcome-screen.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.welcome-content {
+    width: min(90%, 600px);
+    animation: welcomeAppear 1.8s ease;
+}
+
+.om-symbol {
+    font-size: 55px;
+    margin-bottom: 15px;
+
+    text-shadow:
+        0 0 10px #ffb52e,
+        0 0 30px #ff7a00;
+
+    animation: omGlow 2s infinite alternate;
+}
+
+.welcome-small {
+    color: #ffc857;
+    letter-spacing: 3px;
+    font-size: 14px;
+}
+
+.welcome-content h1 {
+    margin: 25px 0;
+
+    font-size: clamp(42px, 10vw, 85px);
+    line-height: 0.95;
+
+    letter-spacing: 4px;
+
+    background: linear-gradient(
+        180deg,
+        #fff4bd,
+        #ffbd42,
+        #e96b13
+    );
+
+    -webkit-background-clip: text;
+    color: transparent;
+
+    text-shadow: 0 0 30px rgba(255, 147, 30, .2);
+}
+
+.welcome-content h1 span {
+    font-size: .48em;
+    letter-spacing: 5px;
+}
+
+.welcome-subtitle {
+    color: #f5d99b;
+    letter-spacing: 4px;
+}
+
+#enterBtn,
+#lightDiyaBtn {
+    border: 1px solid #ffbd4a;
+    background: rgba(255, 166, 42, .12);
+    color: #ffe9ae;
+
+    padding: 15px 25px;
+    margin-top: 30px;
+
+    border-radius: 50px;
+    cursor: pointer;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    box-shadow:
+        0 0 20px rgba(255, 150, 20, .18);
+
+    transition: .3s;
+}
+
+#enterBtn:hover,
+#lightDiyaBtn:hover {
+    transform: translateY(-3px) scale(1.03);
+    background: rgba(255, 166, 42, .25);
+    box-shadow:
+        0 0 30px rgba(255, 150, 20, .35);
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 14px 6%;
+
+    background: rgba(20, 8, 4, .88);
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid rgba(255, 190, 80, .15);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand > span {
+    font-size: 28px;
+}
+
+.brand strong {
+    display: block;
+    font-size: 15px;
+    letter-spacing: 2px;
+}
+
+.brand small {
+    color: #cda75d;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.menu-btn {
+    background: none;
+    border: none;
+    color: #ffe8aa;
+    font-size: 25px;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+    min-height: 90vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center 40%,
+            rgba(173, 69, 12, .45),
+            transparent 55%
+        );
+}
+
+.hero::before,
+.hero::after {
+    content: "✦";
+
+    position: absolute;
+
+    color: #ffc04b;
+    font-size: 30px;
+
+    animation: floating 4s infinite ease-in-out;
+}
+
+.hero::before {
+    top: 20%;
+    left: 12%;
+}
+
+.hero::after {
+    right: 12%;
+    bottom: 25%;
+    animation-delay: 1s;
+}
+
+.ganpati-symbol {
+    width: 145px;
+    height: 145px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-size: 75px;
+
+    background:
+        radial-gradient(circle,
+        #ffca56,
+        #c9510a 65%,
+        #401305);
+
+    box-shadow:
+        0 0 25px rgba(255, 163, 43, .5),
+        0 0 80px rgba(255, 90, 10, .25);
+
+    animation:
+        heroFloat 4s ease-in-out infinite,
+        heroGlow 2s infinite alternate;
+
+    margin-bottom: 30px;
+}
+
+.hero-top {
+    color: #d9b86b;
+    letter-spacing: 2px;
+    font-size: 12px;
+}
+
+.hero h1 {
+    margin: 20px 0;
+
+    font-size: clamp(48px, 12vw, 100px);
+    line-height: .9;
+
+    letter-spacing: 5px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fff5bd,
+            #ffc64e,
+            #e85c10
+        );
+
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero h1 span {
+    display: block;
+    font-size: .45em;
+    letter-spacing: 7px;
+}
+
+.hero-message {
+    color: #efd59d;
+    font-size: 20px;
+    margin: 20px 0;
+}
+
+.hero-badge {
+    margin-top: 20px;
+
+    border: 1px solid rgba(255, 190, 70, .4);
+
+    padding: 10px 25px;
+    border-radius: 50px;
+
+    background: rgba(255, 180, 50, .07);
+}
+
+.hero-badge span {
+    font-size: 10px;
+    display: block;
+    color: #cda75d;
+}
+
+.hero-badge strong {
+    color: #ffd36b;
+    letter-spacing: 4px;
+}
+
+
+/* =========================================
+   COMMON SECTIONS
+========================================= */
+
+section {
+    padding: 90px 6%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+section h2 {
+    font-size: clamp(28px, 5vw, 45px);
+    margin: 10px 0 20px;
+}
+
+.section-label {
+    color: #eeb84d;
+    letter-spacing: 3px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+/* =========================================
+   COUNTDOWN
+========================================= */
+
+.countdown-section {
+    text-align: center;
+
+    background:
+        linear-gradient(
+            180deg,
+            #180904,
+            #2a1005,
+            #180904
+        );
+
+    max-width: none;
+}
+
+#countdown {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin: 35px auto;
+}
+
+.time-box {
+    min-width: 90px;
+
+    padding: 18px 12px;
+
+    border-radius: 15px;
+
+    background: rgba(255, 187, 67, .06);
+
+    border: 1px solid rgba(255, 190, 70, .25);
+
+    box-shadow:
+        inset 0 0 20px rgba(255, 150, 30, .04);
+}
+
+.time-box strong {
+    display: block;
+
+    font-size: 32px;
+    color: #ffd46e;
+}
+
+.time-box span {
+    font-size: 9px;
+    color: #b9975b;
+}
+
+.event-date {
+    display: inline-flex;
+    flex-direction: column;
+
+    padding: 15px 30px;
+
+    border-radius: 15px;
+
+    background: rgba(255, 180, 50, .08);
+
+    color: #ffe7a5;
+}
+
+
+/* =========================================
+   EVENT CARD
+========================================= */
+
+.event-section {
+    text-align: center;
+}
+
+.event-card {
+    max-width: 650px;
+    margin: 35px auto 0;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 1px;
+
+    overflow: hidden;
+    border-radius: 20px;
+
+    background: rgba(255, 191, 78, .2);
+}
+
+.event-item {
+    padding: 25px 15px;
+
+    display: flex;
+    align-items: center;
+
+    text-align: left;
+    gap: 15px;
+
+    background: #1c0b05;
+}
+
+.event-item > span {
+    font-size: 27px;
+}
+
+.event-item small {
+    display: block;
+    color: #ae8b52;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.event-item strong {
+    font-size: 14px;
+    color: #ffe6a0;
+}
+
+
+/* =========================================
+   ON TIME
+========================================= */
+
+.ontime-section {
+    max-width: none;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(177, 73, 9, .35),
+            #170804
+        );
+}
+
+.diya-icon {
+    font-size: 55px;
+
+    animation:
+        diyaGlow 1.5s infinite alternate;
+}
+
+.ontime-section p {
+    max-width: 650px;
+    margin: 15px auto;
+
+    color: #d9c092;
+}
+
+.highlight-text {
+    color: #ffd36c !important;
+    font-weight: bold;
+}
+
+
+/* =========================================
+   DIGITAL DIYA
+========================================= */
+
+.interactive-section {
+    text-align: center;
+}
+
+.digital-diya {
+    margin: 40px auto 15px;
+
+    width: 150px;
+    height: 170px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+
+    cursor: pointer;
+}
+
+.flame {
+    font-size: 60px;
+
+    opacity: .25;
+
+    filter: grayscale(1);
+
+    transition: .5s;
+}
+
+.digital-diya.lit .flame {
+    opacity: 1;
+    filter: none;
+
+    animation:
+        flameMove .5s infinite alternate;
+
+    filter:
+        drop-shadow(0 0 15px #ffb52b);
+}
+
+.diya-body {
+    font-size: 75px;
+}
+
+#diyaMessage {
+    min-height: 30px;
+    color: #ffd46e;
+    margin-top: 10px;
+}
+
+
+/* =========================================
+   MEMORY SECTION
+========================================= */
+
+.memory-section {
+    max-width: none;
+    text-align: center;
+
+    background: #0d0503;
+}
+
+.memory-section > p:not(.section-label) {
+    max-width: 650px;
+    margin: auto;
+    color: #cbb78e;
+}
+
+.memory-grid {
+    max-width: 850px;
+    margin: 40px auto;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+}
+
+.memory-card {
+    min-height: 150px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 181, 55, .12),
+            rgba(255, 110, 15, .03)
+        );
+
+    border: 1px solid rgba(255, 187, 67, .18);
+
+    transition: .4s;
+}
+
+.memory-card:hover {
+    transform: translateY(-8px);
+
+    border-color: rgba(255, 193, 76, .5);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, .4);
+}
+
+.memory-card span {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.memory-card strong {
+    color: #eac777;
+}
+
+.primary-btn {
+    display: inline-block;
+
+    padding: 14px 28px;
+
+    border-radius: 50px;
+
+    color: #2a1003;
+    background: #f3b83f;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    transition: .3s;
+}
+
+.primary-btn:hover {
+    transform: scale(1.04);
+}
+
+
+/* =========================================
+   FINAL SECTION
+========================================= */
+
+.final-section {
+    text-align: center;
+
+    min-height: 60vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(166, 64, 8, .4),
+            #0a0402
+        );
+}
+
+.final-section h2 {
+    color: #ffd16a;
+}
+
+.final-section p {
+    color: #d6bd88;
+}
+
+.batch-signature {
+    margin-top: 35px;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    padding: 35px 20px;
+
+    text-align: center;
+
+    background: #070302;
+
+    border-top: 1px solid rgba(255, 190, 80, .
