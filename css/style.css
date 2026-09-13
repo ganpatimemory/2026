@@ -701,3 +701,129 @@ footer {
     background: #070302;
 
     border-top: 1px solid rgba(255, 190, 80, .
+/* ================================
+   EXPLORE OUR GANPATI
+================================ */
+
+.explore-section {
+    padding: 80px 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-heading span {
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    opacity: 0.65;
+}
+
+.section-heading h2 {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    margin: 12px 0;
+}
+
+.section-heading p {
+    opacity: 0.75;
+}
+
+.explore-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.explore-card {
+    position: relative;
+    display: block;
+    padding: 30px 22px;
+    min-height: 210px;
+    border-radius: 24px;
+
+    text-decoration: none;
+    color: inherit;
+
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,190,80,0.22);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+
+    overflow: hidden;
+}
+
+.explore-card::before {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+
+    top: -60px;
+    right: -60px;
+
+    background: rgba(255,170,50,0.12);
+}
+
+.explore-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255,190,80,0.55);
+    box-shadow: 0 15px 45px rgba(0,0,0,0.3);
+}
+
+.explore-icon {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+}
+
+.explore-card h3 {
+    margin: 5px 0 10px;
+    font-size: 1.35rem;
+}
+
+.explore-card p {
+    margin: 0 0 20px;
+    opacity: 0.7;
+    line-height: 1.6;
+}
+
+.explore-card span {
+    font-size: 0.9rem;
+    font-weight: bold;
+    opacity: 0.9;
+}
+
+
+/* Mobile */
+
+@media (max-width: 750px) {
+
+    .explore-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .explore-section {
+        padding: 60px 15px;
+    }
+
+    .explore-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .explore-card {
+        min-height: 180px;
+    }
+
+}
+ 
