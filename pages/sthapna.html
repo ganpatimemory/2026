@@ -45,13 +45,102 @@
             font-size: 1.05rem;
         }
 
-        .memory-placeholder {
-            max-width: 900px;
-            margin: auto;
-            padding: 50px 20px;
+        /* PHOTO GALLERY */
+
+        .gallery-section {
+            max-width: 1050px;
+            margin: 0 auto 60px;
+            padding: 20px;
+        }
+
+        .gallery-heading {
             text-align: center;
-            border: 1px dashed rgba(255,190,80,0.4);
-            border-radius: 25px;
+            margin-bottom: 30px;
+        }
+
+        .gallery-heading h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .gallery-heading p {
+            opacity: 0.7;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .photo-card {
+            position: relative;
+            height: 230px;
+            overflow: hidden;
+            border-radius: 20px;
+            cursor: pointer;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,190,80,0.2);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .photo-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .photo-number {
+            position: absolute;
+            left: 12px;
+            bottom: 12px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            background: rgba(0,0,0,0.65);
+            font-size: 0.8rem;
+        }
+
+        /* FULL SCREEN IMAGE */
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            inset: 0;
+            background: rgba(0,0,0,0.94);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 95%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 18px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            font-size: 25px;
+            cursor: pointer;
         }
 
         .back-btn {
@@ -62,6 +151,27 @@
             text-decoration: none;
             color: white;
             background: linear-gradient(135deg, #ff9800, #ff5722);
+        }
+
+        @media (max-width: 750px) {
+            .photo-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .photo-card {
+                height: 180px;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .photo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .photo-card {
+                height: 240px;
+            }
         }
     </style>
 </head>
@@ -76,8 +186,12 @@
 
 <main>
 
+    <!-- HERO -->
+
     <section class="page-hero">
+
         <div>
+
             <div style="font-size:4rem;">🙏</div>
 
             <h1>Ganpati Sthapna</h1>
@@ -89,9 +203,13 @@
             <a href="../index.html" class="back-btn">
                 ← Home पर वापस जाएँ
             </a>
+
         </div>
+
     </section>
 
+
+    <!-- EVENT DETAILS -->
 
     <section class="event-info">
 
@@ -110,27 +228,197 @@
     </section>
 
 
-    <section class="memory-placeholder">
+    <!-- PHOTO GALLERY -->
 
-        <h2>📸 Sthapna Memories</h2>
+    <section class="gallery-section">
 
-        <p>
-            यहाँ हमारी Ganpati Sthapna की photos,
-            videos और special moments हमेशा के लिए सुरक्षित रहेंगे।
-        </p>
+        <div class="gallery-heading">
 
-        <p style="margin-top:20px; opacity:0.7;">
-            Photos & memories जल्द यहाँ दिखाई देंगी ❤️
-        </p>
+            <h2>📸 Sthapna Memories</h2>
+
+            <p>
+                बप्पा के आगमन के खूबसूरत पल
+            </p>
+
+        </div>
+
+
+        <div class="photo-grid">
+
+            <div class="photo-card"
+                 onclick="openLightbox('photo1')">
+
+                <img
+                    id="photo1"
+                    src="../assets/images/sthapna/photo1.jpg"
+                    alt="Ganpati Sthapna Photo 1"
+                >
+
+                <div class="photo-number">
+                    Moment 01
+                </div>
+
+            </div>
+
+
+            <div class="photo-card"
+                 onclick="openLightbox('photo2')">
+
+                <img
+                    id="photo2"
+                    src="../assets/images/sthapna/photo2.jpg"
+                    alt="Ganpati Sthapna Photo 2"
+                >
+
+                <div class="photo-number">
+                    Moment 02
+                </div>
+
+            </div>
+
+
+            <div class="photo-card"
+                 onclick="openLightbox('photo3')">
+
+                <img
+                    id="photo3"
+                    src="../assets/images/sthapna/photo3.jpg"
+                    alt="Ganpati Sthapna Photo 3"
+                >
+
+                <div class="photo-number">
+                    Moment 03
+                </div>
+
+            </div>
+
+
+            <div class="photo-card"
+                 onclick="openLightbox('photo4')">
+
+                <img
+                    id="photo4"
+                    src="../assets/images/sthapna/photo4.jpg"
+                    alt="Ganpati Sthapna Photo 4"
+                >
+
+                <div class="photo-number">
+                    Moment 04
+                </div>
+
+            </div>
+
+
+            <div class="photo-card"
+                 onclick="openLightbox('photo5')">
+
+                <img
+                    id="photo5"
+                    src="../assets/images/sthapna/photo5.jpg"
+                    alt="Ganpati Sthapna Photo 5"
+                >
+
+                <div class="photo-number">
+                    Moment 05
+                </div>
+
+            </div>
+
+
+            <div class="photo-card"
+                 onclick="openLightbox('photo6')">
+
+                <img
+                    id="photo6"
+                    src="../assets/images/sthapna/photo6.jpg"
+                    alt="Ganpati Sthapna Photo 6"
+                >
+
+                <div class="photo-number">
+                    Moment 06
+                </div>
+
+            </div>
+
+        </div>
 
     </section>
 
+
+    <!-- LIGHTBOX -->
+
+    <div id="lightbox"
+         class="lightbox"
+         onclick="closeLightbox()">
+
+        <button
+            class="close-lightbox"
+            onclick="event.stopPropagation(); closeLightbox();">
+            ×
+        </button>
+
+        <img
+            id="lightboxImage"
+            src=""
+            alt="Full Screen Memory"
+            onclick="event.stopPropagation();"
+        >
+
+    </div>
+
 </main>
 
+
 <footer>
+
     <p>🙏 Ganpati Bappa Morya 🙏</p>
-    <p>Our Batch • 2026 | GMC Seoni</p>
+
+    <p>
+        Our Batch • 2026 | GMC Seoni
+    </p>
+
 </footer>
+
+
+<script>
+
+function openLightbox(imageId) {
+
+    const image = document.getElementById(imageId);
+
+    const lightbox = document.getElementById("lightbox");
+
+    const lightboxImage =
+        document.getElementById("lightboxImage");
+
+    lightboxImage.src = image.src;
+
+    lightbox.classList.add("active");
+
+}
+
+
+function closeLightbox() {
+
+    const lightbox =
+        document.getElementById("lightbox");
+
+    lightbox.classList.remove("active");
+
+}
+
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+
+        closeLightbox();
+
+    }
+
+});
+
+</script>
 
 </body>
 </html>
