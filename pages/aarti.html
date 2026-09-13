@@ -145,8 +145,9 @@ const aartiPhotos = [
     "photo6.jpg"
 ];
 
-const aartiGrid =
-    document.getElementById("aartiPhotoGrid");
+const aartiGrid = document.getElementById("aartiPhotoGrid");
+
+let currentPhoto = 0;
 
 aartiPhotos.forEach((photo, index) => {
     const card = document.createElement("div");
@@ -156,6 +157,7 @@ aartiPhotos.forEach((photo, index) => {
         <img
             src="../assets/images/aarti/${photo}"
             alt="Ganpati Aarti Memory ${index + 1}"
+            onclick="openAartiLightbox(${index})"
         >
 
         <div class="photo-number">
@@ -165,6 +167,41 @@ aartiPhotos.forEach((photo, index) => {
 
     aartiGrid.appendChild(card);
 });
+
+function openAartiLightbox(index) {
+    currentPhoto = index;
+
+    document.getElementById("aartiLightbox").style.display = "flex";
+
+    showAartiPhoto();
+}
+
+function closeAartiLightbox() {
+    document.getElementById("aartiLightbox").style.display = "none";
+}
+
+function showAartiPhoto() {
+    document.getElementById("aartiFullImage").src =
+        "../assets/images/aarti/" + aartiPhotos[currentPhoto];
+
+    document.getElementById("aartiCounter").innerText =
+        `${currentPhoto + 1} / ${aartiPhotos.length}`;
+}
+
+function nextAartiPhoto() {
+    currentPhoto =
+        (currentPhoto + 1) % aartiPhotos.length;
+
+    showAartiPhoto();
+}
+
+function previousAartiPhoto() {
+    currentPhoto =
+        (currentPhoto - 1 + aartiPhotos.length)
+        % aartiPhotos.length;
+
+    showAartiPhoto();
+}
 </script>
 </body>
 </html>
