@@ -38,10 +38,12 @@ body {
     text-align: center;
 
     background:
-        radial-gradient(circle at center,
-        #5c250c 0%,
-        #241006 45%,
-        #080403 100%);
+        radial-gradient(
+            circle at center,
+            #5c250c 0%,
+            #241006 45%,
+            #080403 100%
+        );
 
     transition:
         opacity 1s ease,
@@ -251,10 +253,12 @@ body {
     font-size: 75px;
 
     background:
-        radial-gradient(circle,
-        #ffca56,
-        #c9510a 65%,
-        #401305);
+        radial-gradient(
+            circle,
+            #ffca56,
+            #c9510a 65%,
+            #401305
+        );
 
     box-shadow:
         0 0 25px rgba(255, 163, 43, .5),
@@ -700,12 +704,13 @@ footer {
 
     background: #070302;
 
-    border-top: 1px solid rgba(255, 190, 80,
-                               }
-                               
-/* ================================
+    border-top: 1px solid rgba(255, 190, 80, .15);
+}
+
+
+/* =========================================
    EXPLORE OUR GANPATI
-================================ */
+========================================= */
 
 .explore-section {
     padding: 80px 20px;
@@ -742,8 +747,10 @@ footer {
 .explore-card {
     position: relative;
     display: block;
+
     padding: 30px 22px;
     min-height: 210px;
+
     border-radius: 24px;
 
     text-decoration: none;
@@ -762,9 +769,12 @@ footer {
 
 .explore-card::before {
     content: "";
+
     position: absolute;
+
     width: 120px;
     height: 120px;
+
     border-radius: 50%;
 
     top: -60px;
@@ -775,8 +785,11 @@ footer {
 
 .explore-card:hover {
     transform: translateY(-8px);
+
     border-color: rgba(255,190,80,0.55);
-    box-shadow: 0 15px 45px rgba(0,0,0,0.3);
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,0.3);
 }
 
 .explore-icon {
@@ -791,6 +804,7 @@ footer {
 
 .explore-card p {
     margin: 0 0 20px;
+
     opacity: 0.7;
     line-height: 1.6;
 }
@@ -802,7 +816,127 @@ footer {
 }
 
 
-/* Mobile */
+/* =========================================
+   AARTI FULL-SCREEN PHOTO VIEWER
+========================================= */
+
+.aarti-lightbox {
+    display: none;
+
+    position: fixed;
+    inset: 0;
+
+    z-index: 99999;
+
+    background: rgba(0, 0, 0, 0.96);
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.aarti-lightbox img {
+    display: block;
+
+    max-width: 90%;
+    max-height: 82vh;
+
+    width: auto;
+    height: auto;
+
+    object-fit: contain;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 0 35px rgba(255, 180, 50, 0.45);
+}
+
+.aarti-close,
+.aarti-prev,
+.aarti-next {
+    position: absolute;
+
+    border: none;
+
+    background: rgba(255, 255, 255, 0.12);
+
+    color: white;
+
+    cursor: pointer;
+
+    z-index: 100000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    transition: .25s;
+}
+
+.aarti-close:hover,
+.aarti-prev:hover,
+.aarti-next:hover {
+    background: rgba(255, 180, 50, 0.35);
+}
+
+.aarti-close {
+    top: 20px;
+    right: 20px;
+
+    width: 45px;
+    height: 45px;
+
+    font-size: 24px;
+}
+
+.aarti-prev,
+.aarti-next {
+    top: 50%;
+
+    width: 52px;
+    height: 52px;
+
+    font-size: 42px;
+    line-height: 1;
+}
+
+.aarti-prev {
+    left: 20px;
+    transform: translateY(-50%);
+}
+
+.aarti-next {
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+.aarti-counter {
+    position: absolute;
+
+    bottom: 25px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: white;
+
+    font-size: 16px;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    padding: 8px 16px;
+
+    border-radius: 20px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
 
 @media (max-width: 750px) {
 
@@ -810,6 +944,52 @@ footer {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .memory-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .event-card {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .aarti-lightbox {
+        padding: 10px;
+    }
+
+    .aarti-lightbox img {
+        max-width: 96%;
+        max-height: 78vh;
+    }
+
+    .aarti-prev,
+    .aarti-next {
+        width: 42px;
+        height: 42px;
+
+        font-size: 32px;
+    }
+
+    .aarti-prev {
+        left: 8px;
+    }
+
+    .aarti-next {
+        right: 8px;
+    }
+
+    .aarti-close {
+        top: 12px;
+        right: 12px;
+
+        width: 40px;
+        height: 40px;
+
+        font-size: 20px;
+    }
 }
 
 
@@ -827,118 +1007,92 @@ footer {
         min-height: 180px;
     }
 
-}                               
- .aarti-lightbox {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    background: rgba(0, 0, 0, 0.96);
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+    .memory-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
-.aarti-lightbox img {
-    max-width: 90%;
-    max-height: 82vh;
-    object-fit: contain;
-    border-radius: 12px;
-    box-shadow: 0 0 35px rgba(255, 180, 50, 0.45);
-}
 
-.aarti-close,
-.aarti-prev,
-.aarti-next {
-    position: absolute;
-    border: none;
-    background: rgba(255, 255, 255, 0.12);
-    color: white;
-    cursor: pointer;
-    z-index: 10000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    transition: 0.25s;
-}
+/* =========================================
+   ANIMATIONS
+========================================= */
 
-.aarti-close:hover,
-.aarti-prev:hover,
-.aarti-next:hover {
-    background: rgba(255, 180, 50, 0.35);
-    transform: scale(1.08);
-}
-
-.aarti-close {
-    top: 20px;
-    right: 20px;
-    width: 45px;
-    height: 45px;
-    font-size: 24px;
-}
-
-.aarti-prev,
-.aarti-next {
-    top: 50%;
-    transform: translateY(-50%);
-    width: 52px;
-    height: 52px;
-    font-size: 42px;
-    line-height: 1;
-}
-
-.aarti-prev {
-    left: 20px;
-}
-
-.aarti-next {
-    right: 20px;
-}
-
-.aarti-counter {
-    position: absolute;
-    bottom: 25px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: white;
-    font-size: 16px;
-    background: rgba(0, 0, 0, 0.55);
-    padding: 8px 16px;
-    border-radius: 20px;
-}
-
-@media (max-width: 600px) {
-
-    .aarti-lightbox {
-        padding: 10px;
+@keyframes welcomeAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(.96);
     }
 
-    .aarti-lightbox img {
-        max-width: 96%;
-        max-height: 78vh;
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes omGlow {
+    from {
+        text-shadow:
+            0 0 10px #ffb52e,
+            0 0 25px #ff7a00;
     }
 
-    .aarti-prev,
-    .aarti-next {
-        width: 42px;
-        height: 42px;
-        font-size: 32px;
+    to {
+        text-shadow:
+            0 0 20px #ffd45c,
+            0 0 50px #ff7a00;
+    }
+}
+
+@keyframes heroFloat {
+    0%, 100% {
+        transform: translateY(0);
     }
 
-    .aarti-prev {
-        left: 8px;
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes heroGlow {
+    from {
+        box-shadow:
+            0 0 25px rgba(255, 163, 43, .5),
+            0 0 60px rgba(255, 90, 10, .2);
     }
 
-    .aarti-next {
-        right: 8px;
+    to {
+        box-shadow:
+            0 0 40px rgba(255, 190, 60, .7),
+            0 0 100px rgba(255, 90, 10, .35);
+    }
+}
+
+@keyframes floating {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
     }
 
-    .aarti-close {
-        top: 12px;
-        right: 12px;
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
+    50% {
+        transform: translateY(-15px) rotate(10deg);
+    }
+}
+
+@keyframes diyaGlow {
+    from {
+        filter: drop-shadow(0 0 5px #ff9d22);
+    }
+
+    to {
+        filter: drop-shadow(0 0 25px #ffb52b);
+    }
+}
+
+@keyframes flameMove {
+    from {
+        transform: scale(1) rotate(-3deg);
+    }
+
+    to {
+        transform: scale(1.08) rotate(3deg);
     }
 }
